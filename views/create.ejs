@@ -1,0 +1,40 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+  <h1 class="text-primary">Inbox</h1>
+
+  <div class="mb-3">
+    <label for="title" class="form-label">Title:</label>
+    <input type="text" name="title" id="title" class="form-control" placeholder="Add task" />
+  </div>
+
+  <div class="mb-3">
+    <label for="duedate" class="form-label">Due Date:</label>
+    <input type="date" name="duedate" id="date" class="form-control" />
+  </div>
+
+  <div class="mt-4">
+    <button id="Addtaskbtn" class="btn btn-primary">Add Task</button>
+    <form action="/create/tasks" method="GET" class="d-inline ms-2 needs-validation" novalidate >
+      <button class="btn btn-secondary">All Tasks</button>
+    </form>
+  </div>
+
+  <ul class="unordered-list1"></ul>
+<ul class="unordered-list2"></ul>
+
+
+
+  <h3 class="mt-5">Current Tasks</h3>
+  <div class="currentTask"></div>
+
+  <h3 class="mt-4">Fulfilled</h3>
+  <div class="completedTask"></div>
+
+  <h1 class="mt-5 text-secondary">All Recent Tasks</h1>
+  <% for (let res of result) { %>
+    <p><strong><%= res.title %></strong>, <%= res.status %></p>
+  <% } %>
+</div>
+
+<script src="/js/script.js"></script>

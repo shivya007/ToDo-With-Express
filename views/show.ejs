@@ -1,0 +1,29 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container mt-4">
+  <h1 class="text-primary">All Tasks</h1>
+  <span><a href="/create" class="btn btn-link">Home</a></span>
+
+  <% for(let res of result){ %>
+  <div class="task-item border rounded p-3 mb-3">
+    <h5><%= res.title %></h5>
+    <form
+      action="/create/tasks/<%= res._id %>"
+      method="GET"
+      class="d-inline needs-validation"
+      novalidate
+    >
+      <button type="submit" class="btn btn-warning">Edit</button>
+    </form>
+    <form
+      action="/create/tasks/<%= res._id %>?_method=DELETE"
+      method="POST"
+      class="d-inline needs-validation"
+      novalidate
+    >
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+  <% } %>
+</div>
+
+<script src="/js/script.js"></script>

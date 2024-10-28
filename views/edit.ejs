@@ -1,0 +1,48 @@
+<% layout("/layouts/boilerplate") %>
+<form action="/create/tasks/<%= taskdata._id %>?_method=PUT" method="POST" class="container mt-4">
+  <h1 class="text-primary">Welcome to Edit Page</h1>
+
+  <div class="mb-3">
+    <label for="title" class="form-label">Title:</label>
+    <input
+      type="text"
+      id="title"
+      name="tasks[title]"
+      value="<%= taskdata.title %>"
+      class="form-control"
+      placeholder="Edit task title"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description:</label>
+    <textarea
+      name="tasks[description]"
+      id="description"
+      rows="4"
+      class="form-control"
+      placeholder="Edit task description"
+    ><%= taskdata.description %></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="duedate" class="form-label">Due Date:</label>
+    <input
+      type="date"
+      id="duedate"
+      name="tasks[duedate]"
+      value="<%= taskdata.duedate.toISOString().substring(0, 10) %>"
+      class="form-control"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="status" class="form-label">Status:</label>
+    <select name="tasks[status]" id="selectoption" class="form-select">
+      <option value="completed" <%= taskdata.status === 'completed' ? 'selected' : '' %>>Completed</option>
+      <option value="pending" <%= taskdata.status === 'pending' ? 'selected' : '' %>>Pending</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Make Changes</button>
+</form>
